@@ -1,0 +1,54 @@
+<div class="row container-fluid">
+  <div class="col mt-2">
+    <h2 class="text-center">Add Booking</h2>
+    <!-- form for book create and edit -->
+    <form novalidate #form="ngForm" (ngSubmit)="submitForm(form)">
+      <!-- room info -->
+      <div class="form-group">
+        <label>Name of Room</label>
+        <select (change)="change($event.target.value)" class="form-control">
+          <option *ngFor="let r of bookRepository.rooms; let i=index">{{r.room_name}}</option>
+        </select>
+      </div>
+      <!-- number of seats -->
+      <div class="form-group">
+        <label>Number of Seats</label>
+        <input [value]="bookRepository.seats" disabled class="form-control" name="seat" />
+      </div>
+
+      <!-- Avaiable room use start time -->
+      <div class="form-group">
+        <label>Available from</label>
+        <input [value]="bookRepository.roomStartTime | date: 'hh:mm a'" disabled class="form-control" name="avaiableStartTime" />
+      </div>
+
+      <!-- Available room use end time -->
+      <div class="form-group">
+        <label>Available to</label>
+        <input [value]="bookRepository.roomEndTime | date: 'hh:mm a'" disabled class="form-control" name="availableEndTime" />
+      </div>
+
+      <!-- booking start time -->
+      <div class="form-group">
+        <label>Start Time</label>
+        <input #from="ngModel" type="time" name="from" (change)="start_time=$event.target.value" [ngModel]="start_time"
+          class="form-control" required />
+        <span class="text-danger" *ngIf="submitted && from.invalid">Please enter the start
+          time</span>
+      </div>
+      <!-- booking end time -->
+      <div class="form-group">
+        <label>End Time</label>
+        <input #to="ngModel" type="time" name="to" (change)="end_time=$event.target.value" [ngModel]="end_time" class="form-control"
+          required />
+        <span class="text-danger" *ngIf="submitted && to.invalid">Please enter the end
+          time</span>
+      </div>
+      <!-- ctrl btns -->
+      <div class="text-center">
+        <button class="btn btn-success ml-2 mr-2" type="submit">Add</button>
+        <button class="btn btn-secondary ml-2 mr-2" (click)="navigateToCalend()" type="reset">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="container-fluid ml-18p" style="width: 50%; margin-top: 100px;">
+
+  <form novalidate #form="ngForm" (ngSubmit)="submitForm(form)">
+    <div class="form-group row">
+      <div class="col-sm-12 col-md-4 text-right make-center">
+        <label>Name</label>
+      </div>
+      <div class="col">
+        <input #name="ngModel" type="text" class="form-control" [(ngModel)]="user.name" name="name" required />
+      </div>
+    </div>
+    <span class="text-danger" style="margin-left: 40%;" *ngIf="submitted && name.invalid">Please enter the name</span>
+    <div class="form-group row">
+      <div class="col-sm-12 col-md-4 text-right make-center">
+        <label>Job</label>
+      </div>
+      <div class="col">
+        <input #job="ngModel" type="text" class="form-control" [(ngModel)]="user.job" name="job" required />
+      </div>
+    </div>
+    <span class="text-danger" style="margin-left: 40%;" *ngIf="submitted && job.invalid">Please enter the job</span>
+    <div class="form-group row">
+      <div class="col-sm-12 col-md-4 text-right make-center">
+        <label>Phone No</label>
+      </div>
+      <div class="col">
+        <input #phone="ngModel" type="text" class="form-control" pattern="^[0-9]+$" [(ngModel)]="user.phone_no" name="phoneNo"
+          required />
+      </div>
+    </div>
+    <span class="text-danger" style="margin-left: 40%;" *ngIf="submitted && phone.invalid">Please enter the phone
+      number</span>
+
+    <div class="form-group row">
+      <div class="col-sm-12 col-md-4 text-right make-center">
+        <label>Email</label></div>
+      <div class="col">
+        <input #email="ngModel" type="email" class="form-control" [(ngModel)]="user.email" name="email" required />
+      </div>
+    </div>
+    <span class="text-danger" style="margin-left: 40%;" *ngIf="submitted && email.invalid">Please enter the email</span>
+
+    <div class="form-group row">
+      <div class="col-sm-12 col-md-4 text-right make-center">
+        <label>Password</label></div>
+      <div class="col">
+        <input #password="ngModel" type="password" class="form-control" [(ngModel)]="user.password" name="password"
+          required />
+      </div>
+    </div>
+    <span class="text-danger" style="margin-left: 40%;" *ngIf="submitted && password.invalid">Please enter the
+      password</span>
+
+    <div class="form-group row">
+      <div class="col-sm-12 col-md-4 text-right make-center">
+        <label>Confirm password</label></div>
+      <div class="col">
+        <input #confirm="ngModel" type="password" class="form-control" [(ngModel)]="confirmPassword" name="confirm"
+          required />
+      </div>
+    </div>
+    <span class="text-danger" style="margin-left: 40%;" *ngIf="submitted && confirm.invalid">Input the
+      confirm password</span>
+
+    <div class="text-center pl-33p">
+      <button type="submit" class="btn btn-dark m-1 fix_button">Register</button>
+      <button type="button" class="btn btn-dark m-1 fix_button" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

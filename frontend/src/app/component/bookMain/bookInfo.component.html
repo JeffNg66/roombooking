@@ -1,0 +1,65 @@
+<!-- template for booking infos by user & selected date -->
+<div class="row container-fluid mt-2">
+  <div class="col table-responsive">
+    <!-- displays the selected date -->
+    <h2>{{dateUtils.selectedDate | date: 'dd MMM yyyy'}}</h2>
+
+    <!-- book info table -->
+    <table class="table_color" *ngIf="bookRepository.books.length != 0">
+      <thead class="text-center">
+        <th>#</th>
+        <th>Name</th>
+        <th>Job</th>
+        <th>Room</th>
+        <th>From</th>
+        <th>To</th>
+        <th></th>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let b of bookRepository.books; let i=index">
+          <td>{{i+1}}</td>
+          <td>{{b.name}}</td>
+          <td>{{b.job}}</td>
+          <td>{{b.room_name}}</td>
+          <td>{{b.booking_start_time | date: 'hh:mm a'}}</td>
+          <td>{{b.booking_end_time | date: 'hh:mm a'}}</td>
+          <td>
+            <button class="btn btn-sm btn-danger" (click)="deleteBookById(b.id)" [disabled]="user.role_id!=userRole.Admin && user.name!=b.name">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- book info table end -->
+
+    <!-- ctrl btns -->
+    <div class="text-center" style="margin-top: 20px">
+      <button *ngIf="user.role_id==2" class="btn btn-success ml-2 mr-2" (click)="navigateToEdit()" [disabled]="disable">Add
+        Booking</button>
+      <button class="btn btn-secondary ml-2 mr-2" (click)="navigateToCalend()">Back</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- styles -->
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    text-align: center;
+    padding: 8px;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #f2f2f2
+  }
+
+  th {
+    height: 60px
+  }
+
+</style>

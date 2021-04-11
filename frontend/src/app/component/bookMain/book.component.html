@@ -1,0 +1,20 @@
+<!-- Main book component UI -->
+<div class="container-fluid">
+  <!-- When the admin login -->
+  <div *ngIf="user.role_id==userRole.Admin" class="row mt-2">
+    <div class="col-12 col-md-3 p-2">
+      <button class="btn btn-block btn-outline-dark" (click)="onClickStaffs()" [class.active]="selectedCategory==category.Staffs">Staffs</button>
+      <button class="btn btn-block btn-outline-dark" (click)="onClickRooms()" [class.active]="selectedCategory==category.Rooms">Rooms</button>
+      <button class="btn btn-block btn-outline-dark" (click)="onClickBookings()" [class.active]="selectedCategory==category.Bookings">Bookings</button>
+    </div>
+    <div class="col-12 col-md-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <!-- When the normal user(staff) login -->
+  <div *ngIf="user.role_id==userRole.Staff" class="row mt-2">
+    <div class="col p-2 text-center">
+      <app-calend-comp></app-calend-comp>
+    </div>
+  </div>
+</div>

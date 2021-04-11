@@ -1,0 +1,13 @@
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.fix_top {
+  margin-top: 25px;
+}
+
+.header-color {
+  background-color: rgb(183, 200, 218, 0.15);
+  height: 72px;
+  border-bottom: 2px grey solid;
+}

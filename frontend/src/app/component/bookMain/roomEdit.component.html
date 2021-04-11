@@ -1,0 +1,52 @@
+<div class="container-fluid pl-15p pr-15p" style="width: 100%; margin: auto;">
+  <div class="mt-2">
+    <h2 class="text-center">{{editing ? "Edit" : "Add"}} Room</h2>
+    <form novalidate #form="ngForm" (ngSubmit)="submitForm(form)" style="margin-top: 20px;">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-12 col-md-3 text-right make-center">
+            <label>Name of Room</label></div>
+          <div class="col-sm-12 col-md-9">
+            <input #name="ngModel" name="name" class="form-control roominputwidth" type="text" [(ngModel)]="room.room_name"
+              required />
+          </div>
+        </div>
+        <span class="text-danger" style="margin-left: 30%;" *ngIf="submitted && name.invalid">Please enter the name</span>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-12 col-md-3 text-right make-center">
+          <label>Number of Seats</label></div>
+        <div class="col-sm-12 col-md-9">
+          <input #seats="ngModel" name="seats" class="form-control roominputwidth" type="number" [(ngModel)]="room.no_of_seat"
+            required />
+        </div>
+        <span class="text-danger" style="margin-left: 30%;" *ngIf="submitted && seats.invalid">Please enter the seats</span>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-12 col-md-3 text-right make-center">
+          <label>Start Time</label></div>
+        <div class="col-sm-12 col-md-9">
+          <input #from="ngModel" name="from" class="form-control roominputwidth" type="time" [ngModel]="room.room_start_time | date : 'HH:mm'"
+            (change)="changed_start_time=$event.target.value" required />
+        </div>
+        <span class="text-danger" style="margin-left: 30%;" *ngIf="submitted && from.invalid">Please enter the start
+          time</span>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-12 col-md-3 text-right make-center">
+          <label>End Time</label></div>
+        <div class="col-sm-12 col-md-9">
+          <input #to="ngModel" name="to" class="form-control roominputwidth" type="time" [ngModel]="room.room_end_time | date : 'HH:mm'"
+            (change)="changed_end_time=$event.target.value" required />
+        </div>
+        <span class="text-danger" style="margin-left: 30%;" *ngIf="submitted && to.invalid">Please enter the end time</span>
+      </div>
+      <!-- Control btns -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-dark text-white ml-2 mr-2 fix_button">{{editing ? "Save" : "Create"}}</button>
+        <button type="reset" class="btn btn-dark text-white ml-2 mr-2 fix_button actionBtntop" routerLink="/book/main/rooms">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

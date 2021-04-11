@@ -1,0 +1,12 @@
+<!-- Booking page head component - containing login summary component -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="text-white col header-color">
+      <div *ngIf="authService.authenticated" class="navbar-brand">
+        <h3 class="nav-title">Meeting Room Management System</h3>
+      </div>
+      <!-- login summary component - for login and register -->
+      <login-summary></login-summary>
+    </div>
+  </div>
+</div>

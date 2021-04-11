@@ -1,0 +1,33 @@
+<div class="ml-24p p-10" style="width: 45%;">
+  <div class="text-center mb-3 ml-15p">
+    <h1>Log In</h1>
+  </div>
+  <form novalidate #form="ngForm" (ngSubmit)="authenticate(form)">
+    <div class="form-group row">
+      <div class="col-sm-12 col-md-3 text-right make-center">
+        <label>Name</label>
+      </div>
+      <div class="col-sm-12 col-md-9 pr-10p">
+        <input #name="ngModel" type="text" class="form-control" [(ngModel)]="user.name" name="name" required />
+      </div>
+      <span class="text-danger" style="margin-left: 30%;" *ngIf="submitted && name.invalid">Please enter the name</span>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-12 col-md-3 text-right make-center">
+        <label>Password</label>
+      </div>
+      <div class="col-sm-12 col-md-9 pr-10p">
+        <input #password="ngModel" type="password" class="form-control" [(ngModel)]="user.password" name="password"
+          required />
+      </div>
+      <span class="text-danger" style="margin-left: 30%;" *ngIf="submitted && password.invalid">Please enter the
+        password</span>
+    </div>
+    <div class="text-center row">
+      <div class="col ml-15p">
+        <button type="submit" class="btn btn-dark fix_button">Confirm</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,108 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('~bootstrap/dist/css/bootstrap.min.css');
+@import url('~w3-css/w3.css');
+@import url('~font-awesome/css/font-awesome.min.css');
+@import url('~lobibox/dist/css/lobibox.min.css');
+
+
+
+
+.bg-main {
+  background-color: rgb(183, 200, 218, 0.15);
+}
+
+.ml-15p {
+  margin-left: 15%;
+}
+
+.mr-15p {
+  margin-right: 15%;
+}
+
+.pl-10p {
+  padding-left: 10%;
+}
+
+.pr-10p {
+  padding-right: 10%;
+}
+
+.pl-15p {
+  padding-left: 15%;
+}
+
+.pr-15p {
+  padding-right: 15%;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .make-center {
+    text-align: left !important;
+  }
+
+  .ml-18p {
+    margin-left: 25% !important;
+  }
+
+  .pl-33p {
+    padding-left: 0% !important;
+  }
+
+  .ml-24p {
+    margin-left: 29% !important;
+  }
+
+  .ml-15p {
+    margin-left: -5%;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .roominputwidth {
+    width: 100% !important;
+  }
+
+  .actionBtntop {
+    margin-top: 5% !important;
+  }
+
+
+}
+
+@media only screen and (max-width: 650px) {
+  .nav-title {
+    position: absolute;
+    font-size: 19px;
+    margin-top: 3%;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .nav-title {
+    position: absolute;
+    display: none;
+  }
+}
+
+#myflashDiv {
+  text-align: center;
+  -webkit-user-select: none;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.roominputwidth {
+  width: 80%;
+}
+
+.nav-title {
+  position: absolute;
+  color: black;
+}

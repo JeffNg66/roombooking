@@ -1,0 +1,79 @@
+<!-- template for Rooms -->
+<div class="container-fluid">
+  <div class="mt-2">
+    <div class="row">
+      <div class="col-sm-12 col-md-9 table-responsive">
+        <!-- table to show the rooms -->
+        <table class="table_color">
+          <thead class="text-center">
+            <th>#</th>
+            <th>Name</th>
+            <th>Number of Seats</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            <ng-template ngFor let-room [ngForOf]="rooms" let-i="index">
+              <tr class="text-center">
+                <td>
+                  {{i+1}}
+                </td>
+                <td>
+                  {{room.room_name}}
+                </td>
+                <td>
+                  {{room.no_of_seat}}
+                </td>
+                <td>
+                  {{room.room_start_time | date: 'hh:mm a'}}
+                </td>
+                <td>
+                  {{room.room_end_time | date: 'hh:mm a'}}
+                </td>
+                <td>
+                  <!-- Edit & Control buttons -->
+                  <div class="col">
+                    <button class="btn btn-sm btn-primary ml-1 mr-1" [routerLink]="['/book/main/rooms/edit', room.room_id]">Edit</button>
+                    <button class="btn btn-sm btn-danger ml-1 mr-1 actionBtntop" (click)="updateRoom(room)">Delete</button>
+                  </div>
+                </td>
+              </tr>
+            </ng-template>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <!-- Add room button -->
+        <div class="text-center">
+          <button class="btn btn-success text-white" routerLink="/book/main/rooms/create" style="margin-top: 10%; margin-bottom: 10%;">Add
+            Room</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- style -->
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    text-align: center;
+    padding: 8px;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #f2f2f2
+  }
+
+  th {
+    height: 60px
+  }
+
+</style>
