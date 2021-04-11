@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FlashComponent } from './component/bookMain/flash.component';
-import { StoreFirstGuard } from './storeFirst.guard';
 import { RegisterComponent } from './component/bookMain/register.component';
+import { StoreFirstGuard } from './storeFirst.guard';
 
 const routes: Routes = [
   {
@@ -24,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
