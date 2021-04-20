@@ -20,8 +20,9 @@ module.exports.confirm = function(req, res) {
             let password = req.body.password;
             let status = "false";
             let role_id = req.body.role_id;
-            let sql = 'SELECT *  FROM users WHERE name=' + "'" + name + "'"
+            let sql = 'SELECT *  FROM users WHERE name=' + "'" + name + "'" + 'AND password=' + "'" + password + "'"
             con.query(sql, function (err, result) {
+
                 if (err) {
                     res.sendStatus(400);
                 } else {

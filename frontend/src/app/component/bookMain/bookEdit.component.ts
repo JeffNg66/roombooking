@@ -1,18 +1,14 @@
-import { Component, SimpleChange, Inject } from '@angular/core';
-import { BookDTO } from 'src/app/model/bookDTO.model';
+import { Component, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { RoomDTO } from 'src/app/model/roomDTO.model';
+import { Router } from '@angular/router';
 import * as moment from 'moment';
-import { UseExistingWebDriver } from 'protractor/built/driverProviders';
+import { Observer } from 'rxjs';
+import { BookDTO } from 'src/app/model/bookDTO.model';
+import { DateUtils } from 'src/app/model/dateUtils.model';
+import { SharedState, SHARED_STATE } from 'src/app/model/sharedState.model';
 import { User } from 'src/app/model/user.model';
 import { BookRepository } from 'src/app/repository/book.repository';
-import { Router } from '@angular/router';
-import { RoomRepository } from 'src/app/repository/room.repository';
-import { SHARED_STATE, SharedState } from 'src/app/model/sharedState.model';
-import { Observer } from 'rxjs';
-import { DateUtils } from 'src/app/model/dateUtils.model';
 import Notify from '../../../assets/js/notify.js';
-import { UserRole } from 'src/app/model/userRole.enum.js';
 
 /**
  * BookEditComponent - Edit component for booking
@@ -113,9 +109,7 @@ export class BookEditComponent {
     this.bookDTO.room_name = value;
     // update seat count
     let index = this.bookRepository.rooms.findIndex(r => r.room_name == value);
-    this.bookRepository.seats = this.bookRepository.rooms.map(
-      r => r.no_of_seat
-    )[index];
+    this.bookRepository.seats = this.bookRepository.rooms.map(r => r.no_of_seat)[index];
     // update available room start time
     this.bookRepository.roomStartTime = this.bookRepository.rooms.map(r => r.room_start_time)[index];
     // update available room end time
